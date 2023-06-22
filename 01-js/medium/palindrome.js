@@ -7,6 +7,21 @@
 */
 
 function isPalindrome(str) {
+  // First lower case it, then remove white spaces and
+  // then replace the punctuation marks from the original string
+
+  var str1 = str.toLowerCase().replace(/\s/g, '').replace(/[^\w\s]|_/g, "");
+
+  var first  = 0;
+  var last = str1.length - 1;
+
+  while (first < last) {
+    if (str1[first] == str1[last]) {
+      first ++;
+      last --;
+    } else return false
+  }
+
   return true;
 }
 

@@ -9,7 +9,32 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  var cateogorySpend = categoryWiseSpend(transactions);
+  var answer = [];
+
+  for (var i=0; i<Object.keys(cateogorySpend).length; i++) {
+    var key = Object.keys(cateogorySpend)[i];
+    answer.push(
+      {
+        category: key,
+        totalSpent: cateogorySpend[key]
+      }
+    );
+  }
+  console.log(answer);
+  return answer;
+}
+
+function categoryWiseSpend(transactions) {
+  var answerObj = {};
+  for (var i=0; i<transactions.length; i++) {
+    var transaction = transactions[i];
+
+    if (answerObj[transaction.category]) {
+      answerObj[transaction.category] += transaction.price;
+    } else answerObj[transaction.category] = transaction.price;
+  }
+  return answerObj;
 }
 
 module.exports = calculateTotalSpentByCategory;
