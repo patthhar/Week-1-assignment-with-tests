@@ -1,0 +1,1 @@
+This is some text on the sample file that is to be read by a program.
